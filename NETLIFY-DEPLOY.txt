@@ -1,0 +1,88 @@
+🚀 NETLIFY DEPLOYMENT INSTRUCTIONS
+=====================================
+
+📦 Your zip file is ready: uppercuts-netlify.zip (25KB)
+
+✅ WHAT'S INCLUDED:
+- index.html (main website)
+- styles.css (styling)
+- script.js (interactivity)
+- ai-assistant.js (AI chatbot)
+- ai-assistant.css (chatbot styling)
+- manifest.json (PWA config)
+- sitemap.xml (SEO)
+- robots.txt (SEO)
+- .htaccess (server config)
+- assets/ folders (for logo/icons)
+
+🌐 DEPLOY TO NETLIFY (2 MINUTES):
+
+METHOD 1: Drag & Drop (Easiest)
+--------------------------------
+1. Go to: https://app.netlify.com/drop
+2. Drag uppercuts-netlify.zip onto the page
+3. Wait 30 seconds
+4. Your site is LIVE! 🎉
+5. Copy the URL (something like: https://uppercuts-xyz123.netlify.app)
+
+METHOD 2: From Dashboard
+-------------------------
+1. Go to: https://app.netlify.com/
+2. Click "Add new site" → "Deploy manually"
+3. Drag uppercuts-netlify.zip
+4. Click "Deploy"
+5. Done!
+
+📝 AFTER DEPLOYMENT:
+
+1. Add Custom Domain (Optional)
+   - Go to Site Settings → Domain management
+   - Click "Add custom domain"
+   - Enter: uppercutsbarbershop.com (or your domain)
+   - Netlify provides FREE SSL automatically
+
+2. Update Business Info
+   - Download the deployed index.html
+   - Replace phone: (555) 123-UPPER → your real number
+   - Add full address
+   - Upload via Netlify dashboard or redeploy
+
+3. Add Logo
+   - Upload your logo as: assets/images/uppercuts-logo.jpg
+   - Via Netlify file manager or redeploy
+
+4. Test AI Assistant
+   - Click the chat button (bottom-right)
+   - Try: "What are your hours?" or "Book appointment"
+
+5. Set Up Redirects (Recommended)
+   - Create file: _redirects
+   - Add: /* /index.html 200
+   - For single-page app routing
+
+⚡ NETLIFY FEATURES YOU GET FREE:
+- ✅ Automatic HTTPS/SSL
+- ✅ Global CDN (fast worldwide)
+- ✅ Continuous deployment from GitHub
+- ✅ Form handling
+- ✅ Analytics
+- ✅ Custom domain support
+
+🔗 NEXT STEPS:
+1. Deploy the zip file
+2. Get your Netlify URL
+3. Submit to Google Search Console
+4. Add to Google My Business
+5. Start getting reviews!
+
+💡 PRO TIP: Connect your GitHub repo to Netlify for auto-deploys:
+- In Netlify: New site → Import from Git → Connect GitHub
+- Select: alphaaistockx-coder/UpperCuts
+- Every git push auto-deploys! 🚀
+
+📞 NEED HELP?
+- Netlify Docs: https://docs.netlify.com/
+- Netlify Support: https://www.netlify.com/support/
+
+✅ YOUR SITE IS PRODUCTION-READY!
+Deploy now and start dominating your local market! 💈🔥
