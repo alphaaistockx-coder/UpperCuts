@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <!-- Primary Meta Tags -->
-  <title>UpperCuts Barbershop | Premium Fades & Grooming in New Smyrna Beach, FL | UCB</title>
-  <meta name="title" content="UpperCuts Barbershop | Premium Fades & Grooming in New Smyrna Beach, FL | UCB">
-  <meta name="description" content="Award-winning barbershop in New Smyrna Beach. Precision fades, razor-sharp lines, luxury beard sculpting. 4.9★ rated. Walk-ins welcome. Book online 24/7." />
-  <meta name="keywords" content="barbershop near me, New Smyrna Beach barber, precision fade, beard trim, mens grooming, UCB barbershop, best barber Florida, skin fade, taper fade, beard sculpting">
+  <title>Upper Cuts Barbershop | Premium Fades & Grooming in DeLand, FL | UCB</title>
+  <meta name="title" content="Upper Cuts Barbershop | Premium Fades & Grooming in DeLand, FL | UCB">
+  <meta name="description" content="Award-winning barbershop in DeLand, FL. Precision fades, razor-sharp lines, luxury beard sculpting. 4.9★ rated. Walk-ins welcome. Book online 24/7." />
+  <meta name="keywords" content="barbershop near me, DeLand barber, Woodland Blvd barbershop, precision fade, beard trim, mens grooming, UCB barbershop, best barber Florida, skin fade, taper fade, beard sculpting">
   <meta name="author" content="UpperCuts Barbershop">
   <meta name="robots" content="index, follow">
   <meta name="googlebot" content="index, follow">
@@ -18,24 +18,24 @@
   <meta property="og:type" content="business.business">
   <meta property="og:url" content="https://uppercutsbarbershop.com/">
   <meta property="og:title" content="UpperCuts Barbershop | Premium Fades & Grooming | UCB">
-  <meta property="og:description" content="Award-winning barbershop in New Smyrna Beach. Precision fades, razor-sharp lines, luxury beard sculpting. 4.9★ rated. Book online now.">
-  <meta property="og:image" content="https://uppercutsbarbershop.com/assets/images/uppercuts-logo.svg">
+  <meta property="og:description" content="Award-winning barbershop in DeLand, FL. Precision fades, razor-sharp lines, luxury beard sculpting. 4.9★ rated. Book online now.">
+  <meta property="og:image" content="https://uppercutsbarbershop.com/assets/uppercuts-logo.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:site_name" content="UpperCuts Barbershop">
+  <meta property="og:site_name" content="Upper Cuts Barbershop">
   <meta property="og:locale" content="en_US">
-  <meta property="business:contact_data:street_address" content="New Smyrna Beach">
-  <meta property="business:contact_data:locality" content="New Smyrna Beach">
+  <meta property="business:contact_data:street_address" content="1697 N. Woodland Blvd #106 D">
+  <meta property="business:contact_data:locality" content="DeLand">
   <meta property="business:contact_data:region" content="FL">
-  <meta property="business:contact_data:postal_code" content="32168">
+  <meta property="business:contact_data:postal_code" content="32724">
   <meta property="business:contact_data:country_name" content="USA">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:url" content="https://uppercutsbarbershop.com/">
   <meta name="twitter:title" content="UpperCuts Barbershop | Premium Fades & Grooming | UCB">
-  <meta name="twitter:description" content="Award-winning barbershop in New Smyrna Beach. Precision fades, razor-sharp lines, luxury beard sculpting. 4.9★ rated.">
-  <meta name="twitter:image" content="https://uppercutsbarbershop.com/assets/images/uppercuts-logo.svg">
+  <meta name="twitter:description" content="Award-winning barbershop in DeLand, FL. Precision fades, razor-sharp lines, luxury beard sculpting. 4.9★ rated.">
+  <meta name="twitter:image" content="https://uppercutsbarbershop.com/assets/uppercuts-logo.jpg">
 
   <!-- Favicon & App Icons -->
   <link rel="icon" type="image/x-icon" href="/assets/icons/favicon.ico">
@@ -61,9 +61,11 @@
     :root {
       --bg-main: #050509;
       --bg-alt: #0b0b12;
-      --accent-red: #ff2b4a;
+      --accent-red: #ff3333;
       --accent-gold: #f5c76b;
-      --accent-blue: #3bb4ff;
+      --accent-blue: #0066ff;
+      --ucb-blue: #4da6ff;
+      --ucb-red: #ff3333;
       --text-main: #f5f5f7;
       --text-muted: #9a9aa5;
       --card-bg: #11111a;
@@ -489,25 +491,36 @@
       inset: 0;
       background:
         radial-gradient(circle at 30% 0, rgba(255,255,255,0.22) 0, transparent 55%),
-        radial-gradient(circle at 80% 100%, rgba(59,180,255,0.45) 0, transparent 60%),
-        radial-gradient(circle at 0 100%, rgba(255,43,74,0.45) 0, transparent 60%);
+        radial-gradient(circle at 80% 100%, rgba(0,102,255,0.55) 0, transparent 60%),
+        radial-gradient(circle at 0 100%, rgba(255,51,51,0.55) 0, transparent 60%);
       mix-blend-mode: screen;
-      opacity: 0.9;
+      opacity: 0.95;
       pointer-events: none;
+      animation: orbPulse 4s ease-in-out infinite;
+    }
+
+    @keyframes orbPulse {
+      0%, 100% { opacity: 0.95; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.02); }
     }
 
     .hero-logo-floating {
       position: relative;
       width: 78%;
       max-width: 360px;
-      filter: drop-shadow(0 22px 40px rgba(0,0,0,0.9));
-      animation: logoFloat 6s ease-in-out infinite;
+      filter: drop-shadow(0 0 15px #0066ff) drop-shadow(0 0 30px #ff3333) drop-shadow(0 22px 40px rgba(0,0,0,0.9));
+      animation: logoFloat 3s ease-in-out infinite, logoGlow 2s ease-in-out infinite alternate;
       transform-origin: center;
     }
 
     @keyframes logoFloat {
-      0%, 100% { transform: translateY(0) scale(1); }
-      50% { transform: translateY(-10px) scale(1.02); }
+      0%, 100% { transform: translateY(0px) scale(1); }
+      50% { transform: translateY(-20px) scale(1.05); }
+    }
+
+    @keyframes logoGlow {
+      0% { filter: drop-shadow(0 0 10px #0066ff) drop-shadow(0 0 20px #ff3333) drop-shadow(0 22px 40px rgba(0,0,0,0.9)); }
+      100% { filter: drop-shadow(0 0 25px #0066ff) drop-shadow(0 0 40px #ff3333) drop-shadow(0 22px 40px rgba(0,0,0,0.9)); }
     }
 
     .hero-orb-ring {
@@ -1344,7 +1357,7 @@
         <div class="nav-left">
           <div class="nav-logo-wrap">
             <!-- Replace src with your actual logo path if different -->
-            <img src="assets/uppercuts-logo.png" alt="UpperCuts Barbershop Logo">
+            <img src="assets/uppercuts-logo.jpg" alt="Upper Cuts Barbershop - UCB" style="max-height: 70px; width: auto;">
           </div>
           <div class="nav-title">
             <span class="nav-title-main">UpperCuts</span>
@@ -1359,7 +1372,7 @@
           <a href="#booking">Book</a>
         </nav>
         <div class="nav-cta">
-          <span class="nav-phone">Call: (555) 123‑UPPER</span>
+          <span class="nav-phone">Call: (386) 873-4163</span>
           <button class="btn-primary" onclick="scrollToSection('booking')">Book a chair</button>
         </div>
         <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
@@ -1380,7 +1393,7 @@
                 <span class="hero-badge-dot"></span>
                 Award‑Winning Barbershop Experience
               </div>
-              <div class="hero-badge-sub">New Smyrna Beach • FL</div>
+              <div class="hero-badge-sub">DeLand • FL</div>
             </div>
             <h1 class="hero-title">
               Razor sharp <span class="highlight">precision</span><br>
@@ -1412,7 +1425,7 @@
             <div class="hero-orb" id="heroOrb">
               <div class="hero-orb-glow"></div>
               <div class="hero-orb-ring"></div>
-              <img class="hero-logo-floating" src="assets/uppercuts-logo.png" alt="UpperCuts Floating Logo">
+              <img class="hero-logo-floating" src="assets/uppercuts-logo.jpg" alt="Upper Cuts Barbershop - UCB Logo">
               <div class="hero-orb-tag">
                 <span class="hero-orb-tag-dot"></span>
                 <span>Fade Lab • Level: Elite</span>
@@ -1778,7 +1791,7 @@
                   </div>
                   <div class="form-field">
                     <label class="form-label" for="phone">Phone</label>
-                    <input class="form-input" id="phone" name="phone" type="tel" placeholder="(555) 123‑UPPER" required>
+                    <input class="form-input" id="phone" name="phone" type="tel" placeholder="(386) 873-4163" required>
                   </div>
                 </div>
 
@@ -1856,7 +1869,8 @@
                 <h4>Location</h4>
                 <p>
                   <strong>UpperCuts Barbershop</strong><br>
-                  New Smyrna Beach, FL<br>
+                  1697 N. Woodland Blvd #106 D<br>
+                  DeLand, FL 32724<br>
                   <br>
                   Parking available on‑site. Look for the UCB logo glowing in the window.
                 </p>
@@ -1871,7 +1885,7 @@
       <div class="footer-inner">
         <div class="footer-brand">
           <span class="footer-dot"></span>
-          <span>UpperCuts Barbershop • UCB • New Smyrna Beach</span>
+          <span>Upper Cuts Barbershop • UCB • DeLand, FL</span>
         </div>
         <div class="footer-links">
           <a href="#top">Back to top</a>
@@ -2005,18 +2019,18 @@
     "@id": "https://uppercutsbarbershop.com/#organization",
     "name": "UpperCuts Barbershop",
     "alternateName": "UCB UpperCuts",
-    "description": "Award-winning barbershop specializing in precision fades, razor-sharp lines, and luxury grooming services in New Smyrna Beach, Florida.",
+    "description": "Award-winning barbershop specializing in precision fades, razor-sharp lines, and luxury grooming services in DeLand, Florida.",
     "url": "https://uppercutsbarbershop.com",
-    "logo": "https://uppercutsbarbershop.com/assets/images/uppercuts-logo.svg",
-    "image": "https://uppercutsbarbershop.com/assets/images/uppercuts-logo.svg",
-    "telephone": "+1-555-123-8773",
+    "logo": "https://uppercutsbarbershop.com/assets/uppercuts-logo.jpg",
+    "image": "https://uppercutsbarbershop.com/assets/uppercuts-logo.jpg",
+    "telephone": "+1-386-873-4163",
     "priceRange": "$30-$85",
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "New Smyrna Beach",
-      "addressLocality": "New Smyrna Beach",
+      "streetAddress": "1697 N. Woodland Blvd #106 D",
+      "addressLocality": "DeLand",
       "addressRegion": "FL",
-      "postalCode": "32168",
+      "postalCode": "32724",
       "addressCountry": "US"
     },
     "aggregateRating": {

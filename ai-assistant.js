@@ -26,8 +26,8 @@ class UpperCutsAI {
         'Saturday': '9:00 AM – 6:00 PM',
         'Sunday': 'Closed'
       },
-      location: 'New Smyrna Beach, FL',
-      phone: '(555) 123-UPPER',
+      location: '1697 N. Woodland Blvd #106 D, DeLand, FL 32724',
+      phone: '(386) 873-4163',
       walkIns: 'Welcome before 4 PM',
       faqs: [
         { q: 'Do you take walk-ins?', a: 'Yes! Walk-ins are welcome before 4 PM. After 4 PM, we recommend booking in advance.' },
