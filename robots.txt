@@ -1,0 +1,11 @@
+# robots.txt for UpperCuts Barbershop
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+
+# Sitemaps
+Sitemap: https://uppercutsbarbershop.com/sitemap.xml
+
+# Crawl-delay for courtesy
+Crawl-delay: 1
