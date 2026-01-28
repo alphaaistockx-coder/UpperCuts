@@ -1,0 +1,1948 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UCB UpperCuts Barbershop</title>
+  <meta name="description" content="UpperCuts Barbershop – precision fades, razor sharp lines, and a luxury grooming experience." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;900&family=Oswald:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-main: #050509;
+      --bg-alt: #0b0b12;
+      --accent-red: #ff2b4a;
+      --accent-gold: #f5c76b;
+      --accent-blue: #3bb4ff;
+      --text-main: #f5f5f7;
+      --text-muted: #9a9aa5;
+      --card-bg: #11111a;
+      --border-soft: rgba(255,255,255,0.08);
+      --shadow-strong: 0 30px 80px rgba(0,0,0,0.85);
+      --radius-xl: 26px;
+      --radius-lg: 18px;
+      --radius-pill: 999px;
+      --transition-fast: 0.25s ease-out;
+      --transition-med: 0.4s ease-out;
+      --nav-height: 80px;
+      --max-width: 1200px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      scroll-behavior: smooth;
+      background: radial-gradient(circle at top, #151528 0, #050509 55%, #000 100%);
+      color: var(--text-main);
+      font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    body {
+      overflow-x: hidden;
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #050509;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(180deg, var(--accent-red), var(--accent-blue));
+      border-radius: 999px;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    /* Layout */
+    .page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: var(--nav-height);
+      z-index: 50;
+      backdrop-filter: blur(18px);
+      background: linear-gradient(90deg, rgba(5,5,9,0.96), rgba(5,5,9,0.85));
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .nav-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 1.5rem;
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .nav-logo-wrap {
+      width: 52px;
+      height: 52px;
+      border-radius: 18px;
+      background: radial-gradient(circle at 20% 0, #ffffff33 0, #ffffff00 55%), #050509;
+      border: 1px solid rgba(255,255,255,0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 18px 40px rgba(0,0,0,0.7);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .nav-logo-wrap img {
+      width: 140%;
+      object-fit: contain;
+      transform: translateY(2px);
+    }
+
+    .nav-title {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+    }
+
+    .nav-title-main {
+      font-family: "Oswald", sans-serif;
+      font-size: 1.25rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .nav-title-sub {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.75rem;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+    }
+
+    .nav-links a {
+      position: relative;
+      color: var(--text-muted);
+      padding-bottom: 4px;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--accent-red), var(--accent-blue));
+      transition: width var(--transition-fast);
+    }
+
+    .nav-links a:hover {
+      color: var(--text-main);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-cta {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .nav-phone {
+      display: none;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .btn-primary {
+      border-radius: var(--radius-pill);
+      padding: 0.55rem 1.4rem;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      border: 1px solid rgba(255,255,255,0.18);
+      background: radial-gradient(circle at 0 0, rgba(255,255,255,0.18) 0, rgba(255,255,255,0) 55%), linear-gradient(135deg, var(--accent-red), var(--accent-blue));
+      color: #fff;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.7);
+      cursor: pointer;
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast), filter var(--transition-fast);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px) scale(1.02);
+      filter: brightness(1.05);
+      box-shadow: 0 18px 40px rgba(0,0,0,0.85);
+    }
+
+    .btn-ghost {
+      border-radius: var(--radius-pill);
+      padding: 0.55rem 1.4rem;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      border: 1px solid rgba(255,255,255,0.18);
+      background: rgba(10,10,18,0.9);
+      color: var(--text-main);
+      cursor: pointer;
+      transition: background var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
+    }
+
+    .btn-ghost:hover {
+      background: rgba(255,255,255,0.04);
+      transform: translateY(-1px);
+      box-shadow: 0 14px 30px rgba(0,0,0,0.7);
+    }
+
+    .nav-toggle {
+      display: none;
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.18);
+      background: rgba(10,10,18,0.9);
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    .nav-toggle span,
+    .nav-toggle span::before,
+    .nav-toggle span::after {
+      content: "";
+      display: block;
+      width: 16px;
+      height: 2px;
+      border-radius: 999px;
+      background: #fff;
+      position: relative;
+      transition: transform 0.25s ease, opacity 0.25s ease;
+    }
+
+    .nav-toggle span::before {
+      position: absolute;
+      top: -5px;
+    }
+
+    .nav-toggle span::after {
+      position: absolute;
+      top: 5px;
+    }
+
+    .nav-toggle.active span {
+      transform: rotate(45deg);
+    }
+
+    .nav-toggle.active span::before {
+      transform: rotate(-90deg) translateX(-5px);
+    }
+
+    .nav-toggle.active span::after {
+      opacity: 0;
+    }
+
+    /* Hero */
+    main {
+      flex: 1;
+    }
+
+    .hero {
+      min-height: 100vh;
+      padding-top: calc(var(--nav-height) + 2.5rem);
+      padding-bottom: 4rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 3.5rem;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-badge-row {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-badge {
+      border-radius: var(--radius-pill);
+      padding: 0.35rem 0.9rem;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      border: 1px solid rgba(255,255,255,0.18);
+      background: rgba(10,10,18,0.9);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: var(--accent-gold);
+    }
+
+    .hero-badge-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 0, #fff 0, #f5c76b 40%, #b87b2a 100%);
+      box-shadow: 0 0 12px rgba(245,199,107,0.9);
+    }
+
+    .hero-badge-sub {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+    }
+
+    .hero-title {
+      font-family: "Oswald", sans-serif;
+      font-size: clamp(2.8rem, 4vw, 3.6rem);
+      line-height: 1.05;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 1.1rem;
+    }
+
+    .hero-title span.highlight {
+      background: linear-gradient(120deg, var(--accent-red), var(--accent-gold), var(--accent-blue));
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: 1rem;
+      color: var(--text-muted);
+      max-width: 32rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .hero-cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+      align-items: center;
+      margin-bottom: 1.75rem;
+    }
+
+    .hero-meta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .hero-meta-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.15rem;
+    }
+
+    .hero-meta-label {
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 0.7rem;
+      color: #6f6f7a;
+    }
+
+    .hero-meta-value {
+      font-size: 0.9rem;
+      color: var(--text-main);
+    }
+
+    /* Hero right / logo orb */
+    .hero-right {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-orb {
+      width: min(420px, 80vw);
+      aspect-ratio: 1 / 1;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 20% 0, rgba(255,255,255,0.18) 0, rgba(255,255,255,0) 45%),
+        radial-gradient(circle at 80% 100%, rgba(59,180,255,0.4) 0, rgba(59,180,255,0) 55%),
+        radial-gradient(circle at 0 100%, rgba(255,43,74,0.4) 0, rgba(255,43,74,0) 55%),
+        #050509;
+      border: 1px solid rgba(255,255,255,0.16);
+      box-shadow:
+        0 40px 120px rgba(0,0,0,0.95),
+        0 0 80px rgba(59,180,255,0.35),
+        0 0 80px rgba(255,43,74,0.35);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transform-style: preserve-3d;
+      animation: orbFloat 10s ease-in-out infinite;
+    }
+
+    @keyframes orbFloat {
+      0%, 100% { transform: translateY(0) rotate3d(0,1,0,0deg); }
+      50% { transform: translateY(-18px) rotate3d(0,1,0,10deg); }
+    }
+
+    .hero-orb-glow {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 30% 0, rgba(255,255,255,0.22) 0, transparent 55%),
+        radial-gradient(circle at 80% 100%, rgba(59,180,255,0.45) 0, transparent 60%),
+        radial-gradient(circle at 0 100%, rgba(255,43,74,0.45) 0, transparent 60%);
+      mix-blend-mode: screen;
+      opacity: 0.9;
+      pointer-events: none;
+    }
+
+    .hero-logo-floating {
+      position: relative;
+      width: 78%;
+      max-width: 360px;
+      filter: drop-shadow(0 22px 40px rgba(0,0,0,0.9));
+      animation: logoFloat 6s ease-in-out infinite;
+      transform-origin: center;
+    }
+
+    @keyframes logoFloat {
+      0%, 100% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(-10px) scale(1.02); }
+    }
+
+    .hero-orb-ring {
+      position: absolute;
+      inset: 12%;
+      border-radius: 50%;
+      border: 1px dashed rgba(255,255,255,0.18);
+      box-shadow: 0 0 40px rgba(255,255,255,0.12);
+      animation: ringSpin 18s linear infinite;
+      pointer-events: none;
+    }
+
+    @keyframes ringSpin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .hero-orb-tag {
+      position: absolute;
+      bottom: 10%;
+      right: 8%;
+      border-radius: var(--radius-pill);
+      padding: 0.45rem 0.9rem;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      background: rgba(5,5,9,0.96);
+      border: 1px solid rgba(255,255,255,0.2);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      box-shadow: 0 16px 40px rgba(0,0,0,0.9);
+    }
+
+    .hero-orb-tag-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 0, #fff 0, #3bb4ff 40%, #0b4f7a 100%);
+      box-shadow: 0 0 12px rgba(59,180,255,0.9);
+    }
+
+    .hero-orb-floating-chip {
+      position: absolute;
+      top: 12%;
+      left: 8%;
+      border-radius: 16px;
+      padding: 0.4rem 0.7rem;
+      font-size: 0.7rem;
+      background: rgba(5,5,9,0.96);
+      border: 1px solid rgba(255,255,255,0.18);
+      display: flex;
+      flex-direction: column;
+      gap: 0.1rem;
+      box-shadow: 0 16px 40px rgba(0,0,0,0.9);
+    }
+
+    .hero-orb-floating-chip span:first-child {
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--text-muted);
+    }
+
+    .hero-orb-floating-chip span:last-child {
+      font-size: 0.85rem;
+      color: var(--accent-gold);
+    }
+
+    /* Background elements */
+    .hero-bg-grid {
+      position: absolute;
+      inset: 0;
+      background-image: linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+      background-size: 80px 80px;
+      opacity: 0.18;
+      mask-image: radial-gradient(circle at center, black 0, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-bg-gradient {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 10% 0, rgba(255,255,255,0.16) 0, transparent 45%),
+        radial-gradient(circle at 90% 0, rgba(59,180,255,0.25) 0, transparent 55%),
+        radial-gradient(circle at 0 100%, rgba(255,43,74,0.25) 0, transparent 55%);
+      opacity: 0.9;
+      pointer-events: none;
+    }
+
+    /* Sections */
+    section {
+      padding: 4.5rem 1.5rem;
+    }
+
+    .section-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    .section-header {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .section-kicker {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--accent-blue);
+    }
+
+    .section-title {
+      font-family: "Oswald", sans-serif;
+      font-size: 1.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    .section-subtitle {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      max-width: 32rem;
+    }
+
+    /* Services */
+    .services {
+      background: radial-gradient(circle at top, #151528 0, #050509 55%, #000 100%);
+      border-top: 1px solid rgba(255,255,255,0.06);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.5rem;
+    }
+
+    .service-card {
+      background: radial-gradient(circle at 0 0, rgba(255,255,255,0.08) 0, rgba(255,255,255,0) 55%), var(--card-bg);
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--border-soft);
+      padding: 1.5rem 1.4rem;
+      box-shadow: var(--shadow-strong);
+      position: relative;
+      overflow: hidden;
+      transition: transform var(--transition-med), box-shadow var(--transition-med), border-color var(--transition-med), background var(--transition-med);
+    }
+
+    .service-card::before {
+      content: "";
+      position: absolute;
+      inset: -40%;
+      background: radial-gradient(circle at 0 0, rgba(255,255,255,0.18) 0, transparent 55%);
+      opacity: 0;
+      transition: opacity var(--transition-med), transform var(--transition-med);
+      transform: translate3d(-20px, -20px, 0);
+      pointer-events: none;
+    }
+
+    .service-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(255,255,255,0.22);
+      background: radial-gradient(circle at 0 0, rgba(255,255,255,0.12) 0, rgba(255,255,255,0) 55%), #14141f;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.95);
+    }
+
+    .service-card:hover::before {
+      opacity: 1;
+      transform: translate3d(0,0,0);
+    }
+
+    .service-tag {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--text-muted);
+      margin-bottom: 0.75rem;
+    }
+
+    .service-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+    }
+
+    .service-desc {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 1.1rem;
+    }
+
+    .service-meta-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .service-price {
+      font-size: 1rem;
+      color: var(--accent-gold);
+      font-weight: 600;
+    }
+
+    .service-duration {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+    }
+
+    /* Experience strip */
+    .experience-strip {
+      margin-top: 2.5rem;
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--border-soft);
+      background: linear-gradient(120deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+      padding: 1.2rem 1.4rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .experience-main {
+      font-size: 0.95rem;
+    }
+
+    .experience-main span {
+      color: var(--accent-gold);
+      font-weight: 600;
+    }
+
+    .experience-metrics {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      font-size: 0.85rem;
+    }
+
+    .experience-metric {
+      display: flex;
+      flex-direction: column;
+      gap: 0.1rem;
+    }
+
+    .experience-metric strong {
+      font-size: 1.1rem;
+    }
+
+    /* Barbers */
+    .barbers {
+      background: radial-gradient(circle at bottom, #151528 0, #050509 55%, #000 100%);
+    }
+
+    .barbers-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.5rem;
+    }
+
+    .barber-card {
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--border-soft);
+      background: radial-gradient(circle at 0 0, rgba(255,255,255,0.08) 0, rgba(255,255,255,0) 55%), var(--card-bg);
+      padding: 1.4rem;
+      box-shadow: var(--shadow-strong);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+      transition: transform var(--transition-med), box-shadow var(--transition-med), border-color var(--transition-med);
+    }
+
+    .barber-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(255,255,255,0.22);
+      box-shadow: 0 30px 80px rgba(0,0,0,0.95);
+    }
+
+    .barber-avatar {
+      width: 64px;
+      height: 64px;
+      border-radius: 22px;
+      background: radial-gradient(circle at 0 0, rgba(255,255,255,0.2) 0, rgba(255,255,255,0) 55%), #050509;
+      border: 1px solid rgba(255,255,255,0.18);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      box-shadow: 0 18px 40px rgba(0,0,0,0.8);
+    }
+
+    .barber-name {
+      font-weight: 600;
+      font-size: 1rem;
+    }
+
+    .barber-role {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--text-muted);
+    }
+
+    .barber-specialties {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .barber-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.4rem;
+    }
+
+    .barber-tag {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      border-radius: var(--radius-pill);
+      padding: 0.25rem 0.7rem;
+      border: 1px solid rgba(255,255,255,0.18);
+      background: rgba(10,10,18,0.9);
+      color: var(--text-muted);
+    }
+
+    .barber-rating {
+      font-size: 0.85rem;
+      color: var(--accent-gold);
+      margin-top: 0.4rem;
+    }
+
+    /* Gallery / interactive */
+    .gallery {
+      background: radial-gradient(circle at top, #151528 0, #050509 55%, #000 100%);
+      border-top: 1px solid rgba(255,255,255,0.06);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .gallery-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.75rem;
+    }
+
+    .gallery-tile {
+      position: relative;
+      border-radius: 18px;
+      overflow: hidden;
+      background: #11111a;
+      aspect-ratio: 3 / 4;
+      border: 1px solid rgba(255,255,255,0.12);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.9);
+      cursor: pointer;
+      transform-origin: center;
+      transition: transform var(--transition-med), box-shadow var(--transition-med), border-color var(--transition-med), filter var(--transition-med);
+    }
+
+    .gallery-tile:nth-child(2),
+    .gallery-tile:nth-child(5),
+    .gallery-tile:nth-child(8) {
+      transform: translateY(18px);
+    }
+
+    .gallery-tile:hover {
+      transform: translateY(-6px) scale(1.03);
+      box-shadow: 0 30px 80px rgba(0,0,0,0.95);
+      border-color: rgba(255,255,255,0.22);
+      filter: saturate(1.2);
+    }
+
+    .gallery-tile-inner {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      filter: contrast(1.05) saturate(1.1);
+    }
+
+    /* Placeholder gradients to simulate cuts */
+    .gallery-tile.cut-1 .gallery-tile-inner {
+      background-image: linear-gradient(135deg, #11111a 0, #222233 40%, #11111a 100%);
+    }
+    .gallery-tile.cut-2 .gallery-tile-inner {
+      background-image: linear-gradient(135deg, #11111a 0, #333344 40%, #11111a 100%);
+    }
+    .gallery-tile.cut-3 .gallery-tile-inner {
+      background-image: linear-gradient(135deg, #11111a 0, #444455 40%, #11111a 100%);
+    }
+    .gallery-tile.cut-4 .gallery-tile-inner {
+      background-image: linear-gradient(135deg, #11111a 0, #222244 40%, #11111a 100%);
+    }
+    .gallery-tile.cut-5 .gallery-tile-inner {
+      background-image: linear-gradient(135deg, #11111a 0, #333355 40%, #11111a 100%);
+    }
+    .gallery-tile.cut-6 .gallery-tile-inner {
+      background-image: linear-gradient(135deg, #11111a 0, #444466 40%, #11111a 100%);
+    }
+    .gallery-tile.cut-7 .gallery-tile-inner {
+      background-image: linear-gradient(135deg, #11111a 0, #222255 40%, #11111a 100%);
+    }
+    .gallery-tile.cut-8 .gallery-tile-inner {
+      background-image: linear-gradient(135deg, #11111a 0, #333366 40%, #11111a 100%);
+    }
+    .gallery-tile.cut-9 .gallery-tile-inner {
+      background-image: linear-gradient(135deg, #11111a 0, #444477 40%, #11111a 100%);
+    }
+
+    .gallery-tile-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.9), transparent 60%);
+      opacity: 0.9;
+    }
+
+    .gallery-tile-label {
+      position: absolute;
+      left: 0.75rem;
+      bottom: 0.75rem;
+      right: 0.75rem;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: #f5f5f7;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .gallery-tile-label span:last-child {
+      font-size: 0.7rem;
+      color: var(--accent-gold);
+    }
+
+    .gallery-copy {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    .gallery-copy p {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+
+    .gallery-bullets {
+      display: grid;
+      gap: 0.7rem;
+      font-size: 0.9rem;
+    }
+
+    .gallery-bullet {
+      display: flex;
+      gap: 0.6rem;
+      align-items: flex-start;
+    }
+
+    .gallery-bullet-dot {
+      margin-top: 0.3rem;
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--accent-red), var(--accent-blue));
+      box-shadow: 0 0 10px rgba(255,255,255,0.4);
+    }
+
+    /* Testimonials */
+    .testimonials {
+      background: radial-gradient(circle at bottom, #151528 0, #050509 55%, #000 100%);
+    }
+
+    .testimonials-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .testimonial-card {
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--border-soft);
+      background: radial-gradient(circle at 0 0, rgba(255,255,255,0.08) 0, rgba(255,255,255,0) 55%), var(--card-bg);
+      padding: 1.6rem 1.5rem;
+      box-shadow: var(--shadow-strong);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .testimonial-quote {
+      font-size: 0.95rem;
+      color: var(--text-main);
+      margin-bottom: 1.1rem;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      font-size: 0.85rem;
+    }
+
+    .testimonial-author-main {
+      display: flex;
+      flex-direction: column;
+      gap: 0.1rem;
+    }
+
+    .testimonial-name {
+      font-weight: 600;
+    }
+
+    .testimonial-meta {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .testimonial-rating {
+      font-size: 0.9rem;
+      color: var(--accent-gold);
+    }
+
+    .testimonial-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.8rem;
+      font-size: 0.75rem;
+    }
+
+    .testimonial-pill {
+      border-radius: var(--radius-pill);
+      padding: 0.25rem 0.7rem;
+      border: 1px solid rgba(255,255,255,0.18);
+      background: rgba(10,10,18,0.9);
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--text-muted);
+    }
+
+    .testimonial-strip {
+      margin-top: 1.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    /* Booking / contact */
+    .booking {
+      background: radial-gradient(circle at top, #151528 0, #050509 55%, #000 100%);
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .booking-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      gap: 2rem;
+      align-items: flex-start;
+    }
+
+    .booking-card {
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--border-soft);
+      background: radial-gradient(circle at 0 0, rgba(255,255,255,0.08) 0, rgba(255,255,255,0) 55%), var(--card-bg);
+      padding: 1.6rem 1.5rem;
+      box-shadow: var(--shadow-strong);
+    }
+
+    .booking-form {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.9rem;
+    }
+
+    .form-field {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      font-size: 0.85rem;
+    }
+
+    .form-label {
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-size: 0.7rem;
+      color: var(--text-muted);
+    }
+
+    .form-input,
+    .form-select,
+    .form-textarea {
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.18);
+      background: rgba(5,5,9,0.96);
+      padding: 0.65rem 0.75rem;
+      color: var(--text-main);
+      font-size: 0.85rem;
+      outline: none;
+      transition: border-color var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast);
+    }
+
+    .form-input:focus,
+    .form-select:focus,
+    .form-textarea:focus {
+      border-color: rgba(59,180,255,0.8);
+      box-shadow: 0 0 0 1px rgba(59,180,255,0.4);
+      background: rgba(10,10,18,0.96);
+    }
+
+    .form-textarea {
+      min-height: 90px;
+      resize: vertical;
+    }
+
+    .booking-note {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 0.5rem;
+    }
+
+    .booking-side {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    .booking-hours,
+    .booking-location {
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--border-soft);
+      background: radial-gradient(circle at 0 0, rgba(255,255,255,0.08) 0, rgba(255,255,255,0) 55%), var(--card-bg);
+      padding: 1.4rem 1.3rem;
+      box-shadow: var(--shadow-strong);
+      font-size: 0.9rem;
+    }
+
+    .booking-hours h4,
+    .booking-location h4 {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      margin-bottom: 0.6rem;
+    }
+
+    .hours-grid {
+      display: grid;
+      gap: 0.25rem;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .hours-row {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .booking-location p {
+      color: var(--text-muted);
+    }
+
+    .booking-location strong {
+      color: var(--text-main);
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding: 1.5rem 1.5rem 2rem;
+      background: #050509;
+    }
+
+    .footer-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .footer-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .footer-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--accent-red), var(--accent-blue));
+      box-shadow: 0 0 10px rgba(255,255,255,0.4);
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .footer-links a {
+      color: var(--text-muted);
+    }
+
+    .footer-links a:hover {
+      color: var(--text-main);
+    }
+
+    /* Mobile / responsive */
+    @media (max-width: 960px) {
+      .nav-links {
+        position: fixed;
+        top: var(--nav-height);
+        right: 1.2rem;
+        left: 1.2rem;
+        border-radius: 18px;
+        border: 1px solid rgba(255,255,255,0.16);
+        background: rgba(5,5,9,0.98);
+        box-shadow: 0 24px 60px rgba(0,0,0,0.95);
+        padding: 1.1rem 1.2rem;
+        flex-direction: column;
+        gap: 0.9rem;
+        transform-origin: top;
+        transform: scaleY(0.8);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.2s ease, transform 0.2s ease;
+      }
+
+      .nav-links.open {
+        opacity: 1;
+        pointer-events: auto;
+        transform: scaleY(1);
+      }
+
+      .nav-cta {
+        display: none;
+      }
+
+      .nav-phone {
+        display: block;
+      }
+
+      .nav-toggle {
+        display: inline-flex;
+      }
+
+      .hero-inner {
+        grid-template-columns: minmax(0, 1fr);
+        text-align: left;
+      }
+
+      .hero-right {
+        order: -1;
+        margin-bottom: 1.5rem;
+      }
+
+      .hero {
+        padding-top: calc(var(--nav-height) + 1.5rem);
+      }
+
+      .services-grid,
+      .barbers-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .gallery-layout,
+      .testimonials-layout,
+      .booking-layout {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    @media (max-width: 720px) {
+      .services-grid,
+      .barbers-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .experience-strip {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .hero-meta-row {
+        gap: 1rem;
+      }
+
+      .hero-orb {
+        width: min(340px, 90vw);
+      }
+    }
+
+    @media (min-width: 1440px) {
+      body {
+        font-size: 18px;
+      }
+      .hero-inner,
+      .section-inner {
+        max-width: 1320px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="nav-inner">
+        <div class="nav-left">
+          <div class="nav-logo-wrap">
+            <!-- Replace src with your actual logo path if different -->
+            <img src="assets/uppercuts-logo.png" alt="UpperCuts Barbershop Logo">
+          </div>
+          <div class="nav-title">
+            <span class="nav-title-main">UpperCuts</span>
+            <span class="nav-title-sub">Precision Barbershop • UCB</span>
+          </div>
+        </div>
+        <nav class="nav-links" id="navLinks">
+          <a href="#services">Services</a>
+          <a href="#barbers">Barbers</a>
+          <a href="#gallery">Gallery</a>
+          <a href="#testimonials">Reviews</a>
+          <a href="#booking">Book</a>
+        </nav>
+        <div class="nav-cta">
+          <span class="nav-phone">Call: (555) 123‑UPPER</span>
+          <button class="btn-primary" onclick="scrollToSection('booking')">Book a chair</button>
+        </div>
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+          <span></span>
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <!-- HERO -->
+      <section class="hero" id="top">
+        <div class="hero-bg-grid"></div>
+        <div class="hero-bg-gradient"></div>
+        <div class="hero-inner">
+          <div class="hero-left">
+            <div class="hero-badge-row">
+              <div class="hero-badge">
+                <span class="hero-badge-dot"></span>
+                Award‑Winning Barbershop Experience
+              </div>
+              <div class="hero-badge-sub">New Smyrna Beach • FL</div>
+            </div>
+            <h1 class="hero-title">
+              Razor sharp <span class="highlight">precision</span><br>
+              with every single cut.
+            </h1>
+            <p class="hero-subtitle">
+              UpperCuts is where classic craft meets next‑level detail. 4K‑clean fades, sculpted beards, and a vibe that feels like home—every time you sit in the chair.
+            </p>
+            <div class="hero-cta-row">
+              <button class="btn-primary" onclick="scrollToSection('booking')">Reserve your session</button>
+              <button class="btn-ghost" onclick="scrollToSection('gallery')">View signature cuts</button>
+            </div>
+            <div class="hero-meta-row">
+              <div class="hero-meta-item">
+                <span class="hero-meta-label">Walk‑ins</span>
+                <span class="hero-meta-value">Welcome before 4 PM</span>
+              </div>
+              <div class="hero-meta-item">
+                <span class="hero-meta-label">Average rating</span>
+                <span class="hero-meta-value">4.9 ★ on 500+ reviews</span>
+              </div>
+              <div class="hero-meta-item">
+                <span class="hero-meta-label">Since</span>
+                <span class="hero-meta-value">2012 • UCB Family</span>
+              </div>
+            </div>
+          </div>
+          <div class="hero-right">
+            <div class="hero-orb" id="heroOrb">
+              <div class="hero-orb-glow"></div>
+              <div class="hero-orb-ring"></div>
+              <img class="hero-logo-floating" src="assets/uppercuts-logo.png" alt="UpperCuts Floating Logo">
+              <div class="hero-orb-tag">
+                <span class="hero-orb-tag-dot"></span>
+                <span>Fade Lab • Level: Elite</span>
+              </div>
+              <div class="hero-orb-floating-chip">
+                <span>Today</span>
+                <span>3 chairs open • Book now</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SERVICES -->
+      <section class="services" id="services">
+        <div class="section-inner">
+          <div class="section-header">
+            <span class="section-kicker">Services</span>
+            <h2 class="section-title">Cuts built for the camera.</h2>
+            <p class="section-subtitle">
+              From boardroom‑ready tapers to photo‑shoot fades, every service is dialed in for real‑world and 4K close‑ups.
+            </p>
+          </div>
+
+          <div class="services-grid">
+            <article class="service-card">
+              <div class="service-tag">Signature</div>
+              <h3 class="service-title">UCB Precision Fade</h3>
+              <p class="service-desc">
+                Skin‑tight fade with seamless gradients, detailed line‑up, and finished with premium styling product tailored to your hair type.
+              </p>
+              <div class="service-meta-row">
+                <span class="service-price">$45</span>
+                <span class="service-duration">45 min • All hair types</span>
+              </div>
+            </article>
+
+            <article class="service-card">
+              <div class="service-tag">Classic</div>
+              <h3 class="service-title">Executive Cut & Style</h3>
+              <p class="service-desc">
+                Scissor‑focused cut with soft texture, natural movement, and a polished finish that works from office to night out.
+              </p>
+              <div class="service-meta-row">
+                <span class="service-price">$40</span>
+                <span class="service-duration">40 min • Scissor & clipper</span>
+              </div>
+            </article>
+
+            <article class="service-card">
+              <div class="service-tag">Detail</div>
+              <h3 class="service-title">Beard Sculpt & Hot Towel</h3>
+              <p class="service-desc">
+                Full beard shape‑up, razor‑clean cheeks and neck, hot towel treatment, and nourishing oil for a sharp, soft finish.
+              </p>
+              <div class="service-meta-row">
+                <span class="service-price">$30</span>
+                <span class="service-duration">30 min • Razor finish</span>
+              </div>
+            </article>
+
+            <article class="service-card">
+              <div class="service-tag">Combo</div>
+              <h3 class="service-title">Cut + Beard Package</h3>
+              <p class="service-desc">
+                Full precision cut paired with a complete beard sculpt for a fully dialed‑in, camera‑ready look.
+              </p>
+              <div class="service-meta-row">
+                <span class="service-price">$65</span>
+                <span class="service-duration">70 min • Most booked</span>
+              </div>
+            </article>
+
+            <article class="service-card">
+              <div class="service-tag">Fresh Start</div>
+              <h3 class="service-title">Kids & Teens Fade</h3>
+              <p class="service-desc">
+                Age‑appropriate fades and styles with extra attention to comfort, confidence, and that first‑cut experience.
+              </p>
+              <div class="service-meta-row">
+                <span class="service-price">$30</span>
+                <span class="service-duration">35 min • Under 17</span>
+              </div>
+            </article>
+
+            <article class="service-card">
+              <div class="service-tag">Event</div>
+              <h3 class="service-title">Wedding & Event Grooming</h3>
+              <p class="service-desc">
+                Groom and groomsmen packages with synchronized cuts, beard work, and styling so every angle hits on the big day.
+              </p>
+              <div class="service-meta-row">
+                <span class="service-price">Custom</span>
+                <span class="service-duration">By consultation</span>
+              </div>
+            </article>
+          </div>
+
+          <div class="experience-strip">
+            <div class="experience-main">
+              <strong>UpperCuts</strong> has been crafting <span>precision fades and clean lines for over 10 years</span>—with a crew obsessed with detail.
+            </div>
+            <div class="experience-metrics">
+              <div class="experience-metric">
+                <strong>10+</strong>
+                <span>Years behind the chair</span>
+              </div>
+              <div class="experience-metric">
+                <strong>5000+</strong>
+                <span>Clients shaped & counting</span>
+              </div>
+              <div class="experience-metric">
+                <strong>4.9★</strong>
+                <span>Average rating across platforms</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- BARBERS -->
+      <section class="barbers" id="barbers">
+        <div class="section-inner">
+          <div class="section-header">
+            <span class="section-kicker">The crew</span>
+            <h2 class="section-title">Artists behind the chair.</h2>
+            <p class="section-subtitle">
+              Every UpperCuts barber is hand‑picked for skill, consistency, and that calm confidence that lets you relax in the chair.
+            </p>
+          </div>
+
+          <div class="barbers-grid">
+            <article class="barber-card">
+              <div class="barber-avatar">J</div>
+              <div>
+                <div class="barber-name">Jay “Upper” Collins</div>
+                <div class="barber-role">Owner • Master Barber</div>
+              </div>
+              <p class="barber-specialties">
+                Specializes in skin fades, razor work, and full transformations. Known for cinematic before‑and‑after results.
+              </p>
+              <div class="barber-tags">
+                <span class="barber-tag">Skin fades</span>
+                <span class="barber-tag">Razor lines</span>
+                <span class="barber-tag">Transformations</span>
+              </div>
+              <div class="barber-rating">4.9 ★ • 1.8k+ cuts</div>
+            </article>
+
+            <article class="barber-card">
+              <div class="barber-avatar">M</div>
+              <div>
+                <div class="barber-name">Mia “Blend Queen” Rivera</div>
+                <div class="barber-role">Senior Barber</div>
+              </div>
+              <p class="barber-specialties">
+                Seamless blends, textured tops, and camera‑ready styling. Perfect for clients who live on social and in the spotlight.
+              </p>
+              <div class="barber-tags">
+                <span class="barber-tag">Texture</span>
+                <span class="barber-tag">Tapers</span>
+                <span class="barber-tag">Photo‑ready</span>
+              </div>
+              <div class="barber-rating">5.0 ★ • 1.2k+ cuts</div>
+            </article>
+
+            <article class="barber-card">
+              <div class="barber-avatar">D</div>
+              <div>
+                <div class="barber-name">Dre “Detail” Harris</div>
+                <div class="barber-role">Fade Specialist</div>
+              </div>
+              <p class="barber-specialties">
+                Hyper‑clean line‑ups, beard sculpting, and precision fades that hold up under any lighting—studio or street.
+              </p>
+              <div class="barber-tags">
+                <span class="barber-tag">Beards</span>
+                <span class="barber-tag">Line‑ups</span>
+                <span class="barber-tag">Detail work</span>
+              </div>
+              <div class="barber-rating">4.9 ★ • 1k+ cuts</div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- GALLERY / INTERACTIVE -->
+      <section class="gallery" id="gallery">
+        <div class="section-inner">
+          <div class="section-header">
+            <span class="section-kicker">Gallery</span>
+            <h2 class="section-title">Cuts that hit in 4K.</h2>
+            <p class="section-subtitle">
+              Scroll‑stopping fades, sharp beards, and clean silhouettes. Hover over a tile to feel the motion and energy.
+            </p>
+          </div>
+
+          <div class="gallery-layout">
+            <div class="gallery-grid" id="galleryGrid">
+              <div class="gallery-tile cut-1" data-label="High skin fade" data-tag="Most booked">
+                <div class="gallery-tile-inner"></div>
+                <div class="gallery-tile-overlay"></div>
+                <div class="gallery-tile-label">
+                  <span>High skin fade</span>
+                  <span>Most booked</span>
+                </div>
+              </div>
+              <div class="gallery-tile cut-2" data-label="Mid taper" data-tag="Everyday clean">
+                <div class="gallery-tile-inner"></div>
+                <div class="gallery-tile-overlay"></div>
+                <div class="gallery-tile-label">
+                  <span>Mid taper</span>
+                  <span>Everyday clean</span>
+                </div>
+              </div>
+              <div class="gallery-tile cut-3" data-label="Burst fade" data-tag="Statement">
+                <div class="gallery-tile-inner"></div>
+                <div class="gallery-tile-overlay"></div>
+                <div class="gallery-tile-label">
+                  <span>Burst fade</span>
+                  <span>Statement</span>
+                </div>
+              </div>
+              <div class="gallery-tile cut-4" data-label="Waves & line‑up" data-tag="Detail">
+                <div class="gallery-tile-inner"></div>
+                <div class="gallery-tile-overlay"></div>
+                <div class="gallery-tile-label">
+                  <span>Waves & line‑up</span>
+                  <span>Detail</span>
+                </div>
+              </div>
+              <div class="gallery-tile cut-5" data-label="Curly top fade" data-tag="Texture">
+                <div class="gallery-tile-inner"></div>
+                <div class="gallery-tile-overlay"></div>
+                <div class="gallery-tile-label">
+                  <span>Curly top fade</span>
+                  <span>Texture</span>
+                </div>
+              </div>
+              <div class="gallery-tile cut-6" data-label="Executive part" data-tag="Classic">
+                <div class="gallery-tile-inner"></div>
+                <div class="gallery-tile-overlay"></div>
+                <div class="gallery-tile-label">
+                  <span>Executive part</span>
+                  <span>Classic</span>
+                </div>
+              </div>
+              <div class="gallery-tile cut-7" data-label="Beard sculpt" data-tag="Razor">
+                <div class="gallery-tile-inner"></div>
+                <div class="gallery-tile-overlay"></div>
+                <div class="gallery-tile-label">
+                  <span>Beard sculpt</span>
+                  <span>Razor</span>
+                </div>
+              </div>
+              <div class="gallery-tile cut-8" data-label="Low fade" data-tag="Subtle">
+                <div class="gallery-tile-inner"></div>
+                <div class="gallery-tile-overlay"></div>
+                <div class="gallery-tile-label">
+                  <span>Low fade</span>
+                  <span>Subtle</span>
+                </div>
+              </div>
+              <div class="gallery-tile cut-9" data-label="Full transformation" data-tag="Before / after">
+                <div class="gallery-tile-inner"></div>
+                <div class="gallery-tile-overlay"></div>
+                <div class="gallery-tile-label">
+                  <span>Full transformation</span>
+                  <span>Before / after</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="gallery-copy">
+              <p>
+                Every cut at UpperCuts is treated like it’s going on camera—because most of them do. We design shapes that hold up from every angle, under any lighting, and in every frame.
+              </p>
+              <div class="gallery-bullets">
+                <div class="gallery-bullet">
+                  <div class="gallery-bullet-dot"></div>
+                  <div>4K‑ready fades and line‑ups that stay sharp in photos, video, and real life.</div>
+                </div>
+                <div class="gallery-bullet">
+                  <div class="gallery-bullet-dot"></div>
+                  <div>Consultation before every cut so your style matches your lifestyle, job, and vibe.</div>
+                </div>
+                <div class="gallery-bullet">
+                  <div class="gallery-bullet-dot"></div>
+                  <div>Premium products only—no shortcuts, no cheap finishes, no rushed work.</div>
+                </div>
+              </div>
+              <button class="btn-primary" onclick="scrollToSection('booking')">Lock in your next look</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TESTIMONIALS -->
+      <section class="testimonials" id="testimonials">
+        <div class="section-inner">
+          <div class="section-header">
+            <span class="section-kicker">Reviews</span>
+            <h2 class="section-title">The word in the chair.</h2>
+            <p class="section-subtitle">
+              Real clients. Real cuts. Real reactions. This is what it feels like to be part of the UpperCuts family.
+            </p>
+          </div>
+
+          <div class="testimonials-layout">
+            <div>
+              <article class="testimonial-card" id="testimonialCard">
+                <p class="testimonial-quote" id="testimonialQuote">
+                  “Best fade I’ve ever had. The blend is flawless, the beard is on point, and I walked out feeling like a new person.”
+                </p>
+                <div class="testimonial-author">
+                  <div class="testimonial-author-main">
+                    <span class="testimonial-name" id="testimonialName">Marcus L.</span>
+                    <span class="testimonial-meta" id="testimonialMeta">Client for 3 years • Weekly cuts</span>
+                  </div>
+                  <div class="testimonial-rating" id="testimonialRating">★★★★★</div>
+                </div>
+                <div class="testimonial-pills">
+                  <span class="testimonial-pill">Detail obsessed</span>
+                  <span class="testimonial-pill">On‑time appointments</span>
+                  <span class="testimonial-pill">Relaxed vibe</span>
+                </div>
+              </article>
+              <div class="testimonial-strip">
+                <span>4.9 ★ average rating across Google, Yelp, and social.</span>
+                <span>Most clients rebook before they leave the chair.</span>
+              </div>
+            </div>
+            <div>
+              <p style="font-size:0.95rem; color:var(--text-muted); margin-bottom:1rem;">
+                We don’t chase trends—we refine them. Whether you’re coming in for a big change or a weekly clean‑up, the goal is the same: you leave sharper, calmer, and more confident than you walked in.
+              </p>
+              <p style="font-size:0.95rem; color:var(--text-muted);">
+                If it’s your first time at UpperCuts, tell us how you like to wear your hair, show us a photo, or just say “do your thing.” We’ll take it from there.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- BOOKING -->
+      <section class="booking" id="booking">
+        <div class="section-inner">
+          <div class="section-header">
+            <span class="section-kicker">Booking</span>
+            <h2 class="section-title">Your next cut starts here.</h2>
+            <p class="section-subtitle">
+              Lock in your time, your barber, and your vibe. Fill out the form and we’ll confirm your appointment.
+            </p>
+          </div>
+
+          <div class="booking-layout">
+            <div class="booking-card">
+              <form class="booking-form" id="bookingForm">
+                <div class="form-row">
+                  <div class="form-field">
+                    <label class="form-label" for="name">Full name</label>
+                    <input class="form-input" id="name" name="name" type="text" placeholder="Your name" required>
+                  </div>
+                  <div class="form-field">
+                    <label class="form-label" for="phone">Phone</label>
+                    <input class="form-input" id="phone" name="phone" type="tel" placeholder="(555) 123‑UPPER" required>
+                  </div>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-field">
+                    <label class="form-label" for="date">Preferred date</label>
+                    <input class="form-input" id="date" name="date" type="date" required>
+                  </div>
+                  <div class="form-field">
+                    <label class="form-label" for="time">Preferred time</label>
+                    <input class="form-input" id="time" name="time" type="time" required>
+                  </div>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-field">
+                    <label class="form-label" for="service">Service</label>
+                    <select class="form-select" id="service" name="service" required>
+                      <option value="">Select a service</option>
+                      <option value="precision-fade">UCB Precision Fade</option>
+                      <option value="executive-cut">Executive Cut & Style</option>
+                      <option value="beard-sculpt">Beard Sculpt & Hot Towel</option>
+                      <option value="combo">Cut + Beard Package</option>
+                      <option value="kids">Kids & Teens Fade</option>
+                      <option value="wedding">Wedding & Event Grooming</option>
+                    </select>
+                  </div>
+                  <div class="form-field">
+                    <label class="form-label" for="barber">Preferred barber</label>
+                    <select class="form-select" id="barber" name="barber">
+                      <option value="">First available</option>
+                      <option value="jay">Jay “Upper” Collins</option>
+                      <option value="mia">Mia “Blend Queen” Rivera</option>
+                      <option value="dre">Dre “Detail” Harris</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form-field">
+                  <label class="form-label" for="notes">Notes</label>
+                  <textarea class="form-textarea" id="notes" name="notes" placeholder="Tell us what you’re looking for—style, inspiration, or anything we should know."></textarea>
+                </div>
+
+                <button type="submit" class="btn-primary">Request appointment</button>
+                <p class="booking-note" id="bookingNote">
+                  You’ll receive a confirmation text once your time is locked in. Walk‑ins are welcome before 4 PM.
+                </p>
+              </form>
+            </div>
+
+            <div class="booking-side">
+              <div class="booking-hours">
+                <h4>Hours</h4>
+                <div class="hours-grid">
+                  <div class="hours-row">
+                    <span>Mon – Thu</span>
+                    <span>10:00 AM – 7:00 PM</span>
+                  </div>
+                  <div class="hours-row">
+                    <span>Fri</span>
+                    <span>10:00 AM – 8:00 PM</span>
+                  </div>
+                  <div class="hours-row">
+                    <span>Sat</span>
+                    <span>9:00 AM – 6:00 PM</span>
+                  </div>
+                  <div class="hours-row">
+                    <span>Sun</span>
+                    <span>Closed</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="booking-location">
+                <h4>Location</h4>
+                <p>
+                  <strong>UpperCuts Barbershop</strong><br>
+                  New Smyrna Beach, FL<br>
+                  <br>
+                  Parking available on‑site. Look for the UCB logo glowing in the window.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <span class="footer-dot"></span>
+          <span>UpperCuts Barbershop • UCB • New Smyrna Beach</span>
+        </div>
+        <div class="footer-links">
+          <a href="#top">Back to top</a>
+          <a href="#services">Services</a>
+          <a href="#booking">Book now</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // Smooth scroll helper
+    function scrollToSection(id) {
+      const el = document.getElementById(id);
+      if (!el) return;
+      window.scrollTo({
+        top: el.offsetTop - 80,
+        behavior: "smooth"
+      });
+    }
+
+    // Mobile nav toggle
+    const navToggle = document.getElementById("navToggle");
+    const navLinks = document.getElementById("navLinks");
+
+    navToggle.addEventListener("click", () => {
+      navToggle.classList.toggle("active");
+      navLinks.classList.toggle("open");
+    });
+
+    navLinks.querySelectorAll("a").forEach(link => {
+      link.addEventListener("click", () => {
+        navToggle.classList.remove("active");
+        navLinks.classList.remove("open");
+      });
+    });
+
+    // Hero orb parallax
+    const heroOrb = document.getElementById("heroOrb");
+    window.addEventListener("mousemove", (e) => {
+      const rect = heroOrb.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width - 0.5;
+      const y = (e.clientY - rect.top) / rect.height - 0.5;
+      const rotateX = y * -10;
+      const rotateY = x * 10;
+      heroOrb.style.transform = `translateY(-6px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+    });
+
+    window.addEventListener("mouseleave", () => {
+      heroOrb.style.transform = "";
+    });
+
+    // Gallery interactive tilt
+    const galleryGrid = document.getElementById("galleryGrid");
+    galleryGrid.querySelectorAll(".gallery-tile").forEach(tile => {
+      tile.addEventListener("mousemove", (e) => {
+        const rect = tile.getBoundingClientRect();
+        const x = (e.clientX - rect.left) / rect.width - 0.5;
+        const y = (e.clientY - rect.top) / rect.height - 0.5;
+        const rotateX = y * -8;
+        const rotateY = x * 8;
+        tile.style.transform = `translateY(-6px) scale(1.03) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+      });
+
+      tile.addEventListener("mouseleave", () => {
+        tile.style.transform = "";
+      });
+    });
+
+    // Simple testimonial rotator
+    const testimonials = [
+      {
+        quote: "“Best fade I’ve ever had. The blend is flawless, the beard is on point, and I walked out feeling like a new person.”",
+        name: "Marcus L.",
+        meta: "Client for 3 years • Weekly cuts",
+        rating: "★★★★★"
+      },
+      {
+        quote: "“They actually listen. I showed one photo, explained my job, and they gave me a cut that works everywhere.”",
+        name: "Jordan P.",
+        meta: "First‑time client • Executive cut",
+        rating: "★★★★★"
+      },
+      {
+        quote: "“Brought my son for his first real fade—he walked out grinning ear to ear. We’re locked in.”",
+        name: "Tasha & Eli",
+        meta: "Mom & son • Kids fade",
+        rating: "★★★★★"
+      }
+    ];
+
+    let testimonialIndex = 0;
+    const testimonialQuote = document.getElementById("testimonialQuote");
+    const testimonialName = document.getElementById("testimonialName");
+    const testimonialMeta = document.getElementById("testimonialMeta");
+    const testimonialRating = document.getElementById("testimonialRating");
+    const testimonialCard = document.getElementById("testimonialCard");
+
+    setInterval(() => {
+      testimonialIndex = (testimonialIndex + 1) % testimonials.length;
+      const t = testimonials[testimonialIndex];
+      testimonialCard.style.opacity = "0";
+      setTimeout(() => {
+        testimonialQuote.textContent = t.quote;
+        testimonialName.textContent = t.name;
+        testimonialMeta.textContent = t.meta;
+        testimonialRating.textContent = t.rating;
+        testimonialCard.style.opacity = "1";
+      }, 250);
+    }, 6000);
+
+    // Booking form (demo only)
+    const bookingForm = document.getElementById("bookingForm");
+    const bookingNote = document.getElementById("bookingNote");
+
+    bookingForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      bookingNote.textContent = "Thanks! Your request has been received. We’ll text you shortly to confirm your appointment.";
+      bookingNote.style.color = "#3bb4ff";
+      bookingForm.reset();
+    });
+  </script>
+</body>
+</html>
