@@ -7,6 +7,10 @@
 [build.environment]
   NODE_VERSION = "18"
 
+# Form notifications - sends booking requests to email
+[[plugins]]
+  package = "@netlify/plugin-emails"
+
 # Redirect rules
 [[redirects]]
   from = "/*"
