@@ -2275,7 +2275,7 @@
 
           <div class="booking-layout">
             <div class="booking-card">
-              <form class="booking-form" id="bookingForm" name="booking" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/success.html">
+              <form class="booking-form" id="bookingForm" name="booking" method="POST" data-netlify="true" netlify-honeypot="bot-field">
                 <input type="hidden" name="form-name" value="booking">
                 <input type="hidden" name="bot-field">
                 <div class="form-row">
@@ -2592,11 +2592,30 @@
     const bookingForm = document.getElementById("bookingForm");
     const bookingNote = document.getElementById("bookingNote");
 
-    // Optional: Add client-side validation feedback
     bookingForm.addEventListener("submit", (e) => {
-      // Netlify will handle the actual submission
-      bookingNote.textContent = "Submitting your booking request...";
-      bookingNote.style.color = "#3bb4ff";
+      e.preventDefault();
+      
+      const formData = new FormData(bookingForm);
+      
+      fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams(formData).toString()
+      })
+      .then(() => {
+        bookingNote.innerHTML = "✓ <strong>Booking Received!</strong> Thanks for choosing UpperCuts! We'll text you shortly to confirm your appointment. Call us at <a href='tel:+13868734163' style='color:#3bb4ff;text-decoration:underline;'>(386) 873-4163</a> if you need immediate assistance.";
+        bookingNote.style.color = "#3bb4ff";
+        bookingNote.style.fontSize = "1.05rem";
+        bookingNote.style.padding = "20px";
+        bookingNote.style.background = "rgba(59, 180, 255, 0.1)";
+        bookingNote.style.borderRadius = "12px";
+        bookingNote.style.marginTop = "20px";
+        bookingForm.reset();
+      })
+      .catch((error) => {
+        bookingNote.textContent = "Oops! There was a problem. Please call us at (386) 873-4163 to book your appointment.";
+        bookingNote.style.color = "#ff3333";
+      });
     });
   </script>
   <script src="enhanced-animations.js" defer></script>
