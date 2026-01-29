@@ -18,11 +18,11 @@ const copyToClipboard = async (value, label) => {
 };
 
 copyPhone?.addEventListener('click', () =>
-  copyToClipboard('+1 (212) 555-0134', 'Phone')
+  copyToClipboard('(386) 873-4163', 'Phone')
 );
 
 copyAddress?.addEventListener('click', () =>
-  copyToClipboard('116 Aurora Avenue, Suite 21', 'Address')
+  copyToClipboard('1697 N. Woodland Blvd #106 D, DeLand, FL 32724', 'Address')
 );
 
 contactForm?.addEventListener('submit', (event) => {

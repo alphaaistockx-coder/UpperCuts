@@ -2,7 +2,7 @@
 
 ## **World-Class Barbershop Website with Built-In AI Assistant**
 
-Award-winning, SEO-optimized, billion-dollar-brand-quality website for UpperCuts Barbershop in New Smyrna Beach, FL.
+Award-winning, SEO-optimized, billion-dollar-brand-quality website for UpperCuts Barbershop in DeLand, FL.
 
 ---
 

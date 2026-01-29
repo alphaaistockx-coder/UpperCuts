@@ -1,0 +1,20 @@
+<svg width="192" height="192" viewBox="0 0 192 192" xmlns="http://www.w3.org/2000/svg">
+  <rect width="192" height="192" fill="#0a0a0a" rx="32"/>
+  <defs>
+    <linearGradient id="iconGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff2b4a"/>
+      <stop offset="50%" style="stop-color:#ff6b35"/>
+      <stop offset="100%" style="stop-color:#ff8c42"/>
+    </linearGradient>
+  </defs>
+  <g transform="translate(96, 60)">
+    <circle cx="-20" cy="0" r="14" fill="none" stroke="url(#iconGrad)" stroke-width="4"/>
+    <line x1="-20" y1="0" x2="0" y2="42" stroke="url(#iconGrad)" stroke-width="6" stroke-linecap="round"/>
+    <circle cx="20" cy="0" r="14" fill="none" stroke="url(#iconGrad)" stroke-width="4"/>
+    <line x1="20" y1="0" x2="0" y2="42" stroke="url(#iconGrad)" stroke-width="6" stroke-linecap="round"/>
+    <line x1="0" y1="42" x2="-12" y2="62" stroke="url(#iconGrad)" stroke-width="5" stroke-linecap="round"/>
+    <line x1="0" y1="42" x2="12" y2="62" stroke="url(#iconGrad)" stroke-width="5" stroke-linecap="round"/>
+  </g>
+  <text x="96" y="140" font-family="Arial Black" font-size="38" font-weight="900" text-anchor="middle" fill="url(#iconGrad)" letter-spacing="3">UC</text>
+  <text x="96" y="165" font-family="Arial" font-size="14" font-weight="300" text-anchor="middle" fill="#ffffff" letter-spacing="2">BARBERSHOP</text>
+</svg>

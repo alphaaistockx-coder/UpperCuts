@@ -1,0 +1,548 @@
+/**
+ * 🏆 WOW COMPONENT STYLES
+ * Award-Winning 3D Interactive Achievements Showcase
+ */
+
+/* ===== SECTION CONTAINER ===== */
+.wow-showcase {
+    position: relative;
+    padding: 120px 0;
+    background: linear-gradient(180deg, #050509 0%, #0a0a14 50%, #050509 100%);
+    overflow: hidden;
+    min-height: 100vh;
+}
+
+.wow-container {
+    position: relative;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+    z-index: 2;
+}
+
+/* ===== CANVAS BACKGROUND ===== */
+.wow-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.6;
+}
+
+/* ===== HEADER SECTION ===== */
+.wow-header {
+    position: relative;
+    text-align: center;
+    margin-bottom: 80px;
+    animation: wowFadeInDown 1s ease-out;
+}
+
+.wow-title-main {
+    display: block;
+    font-size: 4rem;
+    font-weight: 900;
+    font-family: 'Oswald', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    background: linear-gradient(135deg, #f5c76b 0%, #ff3333 50%, #0066ff 100%);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: wowGradientShift 4s ease infinite;
+    margin-bottom: 15px;
+    text-shadow: 0 0 60px rgba(245, 199, 107, 0.5);
+}
+
+.wow-title-sub {
+    display: block;
+    font-size: 1.4rem;
+    color: #9a9aa5;
+    font-weight: 300;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.wow-shine-effect {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(245, 199, 107, 0.15), transparent 70%);
+    animation: wowPulse 3s ease-in-out infinite;
+    pointer-events: none;
+}
+
+/* ===== GRID LAYOUT ===== */
+.wow-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 40px;
+    margin-bottom: 80px;
+    perspective: 2000px;
+}
+
+/* ===== CARD STYLING ===== */
+.wow-card {
+    position: relative;
+    height: 350px;
+    transform-style: preserve-3d;
+    transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+    opacity: 0;
+    transform: translateY(50px) rotateX(-15deg);
+}
+
+.wow-card-visible {
+    opacity: 1;
+    transform: translateY(0) rotateX(0);
+    transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.wow-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.wow-card-flipped .wow-card-inner {
+    transform: rotateY(180deg);
+}
+
+.wow-card-front,
+.wow-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 24px;
+    overflow: hidden;
+}
+
+.wow-card-front {
+    background: linear-gradient(135deg, rgba(17, 17, 26, 0.95), rgba(20, 20, 35, 0.95));
+    backdrop-filter: blur(20px);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 
+        0 20px 60px rgba(0, 0, 0, 0.5),
+        inset 0 0 80px rgba(var(--card-color-rgb), 0.1),
+        0 0 0 1px rgba(255, 255, 255, 0.05);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.wow-card-back {
+    background: linear-gradient(135deg, rgba(20, 20, 35, 0.98), rgba(17, 17, 26, 0.98));
+    backdrop-filter: blur(20px);
+    border: 2px solid var(--card-color);
+    box-shadow: 
+        0 20px 60px rgba(0, 0, 0, 0.5),
+        inset 0 0 80px var(--card-color),
+        0 0 40px var(--card-color);
+    transform: rotateY(180deg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+}
+
+/* ===== CARD ELEMENTS ===== */
+.wow-card-glow {
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, var(--card-color) 0%, transparent 50%);
+    opacity: 0;
+    transition: opacity 0.5s;
+    pointer-events: none;
+}
+
+.wow-card:hover .wow-card-glow {
+    opacity: 0.15;
+    animation: wowRotateGlow 3s linear infinite;
+}
+
+.wow-card-icon {
+    font-size: 5rem;
+    margin-bottom: 20px;
+    filter: drop-shadow(0 0 20px var(--card-color));
+    animation: wowFloat 3s ease-in-out infinite;
+}
+
+.wow-card-stat {
+    font-size: 3.5rem;
+    font-weight: 900;
+    font-family: 'Oswald', sans-serif;
+    color: var(--card-color);
+    text-shadow: 
+        0 0 20px var(--card-color),
+        0 0 40px var(--card-color);
+    margin-bottom: 15px;
+    letter-spacing: 0.05em;
+}
+
+.wow-card-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    font-family: 'Oswald', sans-serif;
+    color: #f5f5f7;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 8px;
+    text-align: center;
+}
+
+.wow-card-subtitle {
+    font-size: 1rem;
+    color: #9a9aa5;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    font-weight: 300;
+}
+
+.wow-card-shine {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.2), transparent 50%);
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+}
+
+.wow-card:hover .wow-card-shine {
+    opacity: 1;
+}
+
+/* ===== CARD BACK CONTENT ===== */
+.wow-card-detail {
+    text-align: center;
+}
+
+.wow-detail-text {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #d1d1d6;
+    margin-bottom: 25px;
+}
+
+.wow-verify-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    background: linear-gradient(135deg, rgba(0, 255, 136, 0.2), rgba(0, 255, 136, 0.1));
+    border: 2px solid #00ff88;
+    border-radius: 50px;
+    color: #00ff88;
+    font-weight: 600;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    box-shadow: 0 0 30px rgba(0, 255, 136, 0.3);
+}
+
+/* ===== ANIMATIONS ===== */
+.wow-card-pulse {
+    animation: wowCardPulse 1s ease;
+}
+
+@keyframes wowCardPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6), 0 0 60px var(--card-color); }
+}
+
+@keyframes wowFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes wowGradientShift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+@keyframes wowRotateGlow {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes wowPulse {
+    0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.15; }
+    50% { transform: translate(-50%, -50%) scale(1.2); opacity: 0.25; }
+}
+
+@keyframes wowFadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===== FOOTER TROPHY ===== */
+.wow-footer {
+    text-align: center;
+    padding: 60px 0;
+    animation: wowFadeInUp 1s ease 0.5s both;
+}
+
+.wow-trophy-showcase {
+    display: inline-flex;
+    align-items: center;
+    gap: 30px;
+    padding: 40px 60px;
+    background: linear-gradient(135deg, rgba(245, 199, 107, 0.1), rgba(255, 51, 51, 0.1));
+    border: 3px solid rgba(245, 199, 107, 0.3);
+    border-radius: 100px;
+    backdrop-filter: blur(20px);
+    box-shadow: 
+        0 20px 60px rgba(245, 199, 107, 0.2),
+        inset 0 0 60px rgba(245, 199, 107, 0.05);
+    animation: wowTrophyFloat 4s ease-in-out infinite;
+}
+
+.wow-trophy {
+    font-size: 5rem;
+    filter: drop-shadow(0 0 30px #f5c76b);
+    animation: wowTrophySpin 10s linear infinite;
+}
+
+@keyframes wowTrophySpin {
+    0%, 80%, 100% { transform: rotateY(0); }
+    85%, 95% { transform: rotateY(360deg); }
+}
+
+@keyframes wowTrophyFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+
+.wow-trophy-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.wow-trophy-title {
+    font-size: 2rem;
+    font-weight: 900;
+    font-family: 'Oswald', sans-serif;
+    color: #f5c76b;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    text-shadow: 0 0 20px rgba(245, 199, 107, 0.5);
+}
+
+.wow-trophy-subtitle {
+    font-size: 1.2rem;
+    color: #9a9aa5;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+@keyframes wowFadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===== FLOATING ORBS ===== */
+.wow-orbs-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.wow-floating-orb {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    opacity: 0.08;
+    filter: blur(40px);
+    animation: wowOrbFloat 10s ease-in-out infinite;
+}
+
+@keyframes wowOrbFloat {
+    0%, 100% {
+        transform: translate(0, 0) scale(1);
+    }
+    25% {
+        transform: translate(100px, -100px) scale(1.2);
+    }
+    50% {
+        transform: translate(-50px, -150px) scale(0.8);
+    }
+    75% {
+        transform: translate(-100px, 50px) scale(1.1);
+    }
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+    .wow-title-main {
+        font-size: 3rem;
+    }
+    
+    .wow-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 30px;
+    }
+    
+    .wow-card {
+        height: 320px;
+    }
+    
+    .wow-card-icon {
+        font-size: 4rem;
+    }
+    
+    .wow-card-stat {
+        font-size: 2.8rem;
+    }
+    
+    .wow-trophy-showcase {
+        padding: 30px 40px;
+        gap: 20px;
+    }
+    
+    .wow-trophy {
+        font-size: 4rem;
+    }
+}
+
+@media (max-width: 720px) {
+    .wow-showcase {
+        padding: 80px 0;
+    }
+    
+    .wow-title-main {
+        font-size: 2.2rem;
+    }
+    
+    .wow-title-sub {
+        font-size: 1rem;
+    }
+    
+    .wow-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+    
+    .wow-card {
+        height: 300px;
+    }
+    
+    .wow-card-icon {
+        font-size: 3.5rem;
+    }
+    
+    .wow-card-stat {
+        font-size: 2.5rem;
+    }
+    
+    .wow-card-title {
+        font-size: 1.5rem;
+    }
+    
+    .wow-trophy-showcase {
+        flex-direction: column;
+        padding: 30px;
+        gap: 15px;
+    }
+    
+    .wow-trophy {
+        font-size: 3.5rem;
+    }
+    
+    .wow-trophy-title {
+        font-size: 1.5rem;
+    }
+    
+    .wow-trophy-subtitle {
+        font-size: 1rem;
+    }
+    
+    .wow-trophy-text {
+        align-items: center;
+        text-align: center;
+    }
+}
+
+/* ===== ACCESSIBILITY ===== */
+@media (prefers-reduced-motion: reduce) {
+    .wow-card,
+    .wow-card-inner,
+    .wow-card-icon,
+    .wow-trophy,
+    .wow-floating-orb,
+    .wow-trophy-showcase,
+    .wow-shine-effect {
+        animation: none !important;
+        transition: none !important;
+    }
+    
+    .wow-card:hover {
+        transform: scale(1.02);
+    }
+}
+
+/* ===== HOVER STATES FOR DESKTOP ===== */
+@media (hover: hover) {
+    .wow-card:hover {
+        cursor: pointer;
+        z-index: 10;
+    }
+    
+    .wow-card:hover .wow-card-front {
+        border-color: var(--card-color);
+        box-shadow: 
+            0 30px 80px rgba(0, 0, 0, 0.6),
+            0 0 60px var(--card-color),
+            inset 0 0 100px rgba(var(--card-color-rgb), 0.2);
+    }
+}
+
+/* ===== PRINT STYLES ===== */
+@media print {
+    .wow-showcase {
+        background: white;
+        color: black;
+    }
+    
+    .wow-canvas,
+    .wow-orbs-container,
+    .wow-shine-effect {
+        display: none;
+    }
+}

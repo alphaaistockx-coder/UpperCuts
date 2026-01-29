@@ -1,0 +1,394 @@
+/* ===== PREMIUM ENHANCEMENTS CSS ===== */
+
+/* Loading Animation */
+body {
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+body.loaded {
+  opacity: 1;
+}
+
+section {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+section.section-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Scroll Progress Bar */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #ff3333 0%, #f5c76b 50%, #0066ff 100%);
+  z-index: 9999;
+  transition: width 0.1s ease;
+  box-shadow: 0 0 10px rgba(255,51,51,0.5);
+}
+
+/* FOMO Notification */
+.fomo-notification {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: linear-gradient(135deg, rgba(5,5,9,0.98) 0%, rgba(15,15,25,0.98) 100%);
+  backdrop-filter: blur(20px);
+  border-radius: 16px;
+  padding: 16px 20px;
+  border: 2px solid rgba(255,193,7,0.3);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.9), 0 0 30px rgba(255,193,7,0.2);
+  z-index: 1000;
+  transform: translateX(400px);
+  opacity: 0;
+  transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  min-width: 280px;
+}
+
+.fomo-notification.show {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.fomo-content {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.fomo-icon {
+  font-size: 28px;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.fomo-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.fomo-text strong {
+  font-size: 15px;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.fomo-detail {
+  font-size: 13px;
+  color: rgba(255,255,255,0.7);
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+/* Social Proof Banner */
+.social-proof-banner {
+  background: linear-gradient(135deg, rgba(255,51,51,0.1) 0%, rgba(0,102,255,0.1) 100%);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 20px;
+  padding: 20px;
+  margin-bottom: 40px;
+  overflow: hidden;
+}
+
+.proof-items {
+  display: flex;
+  gap: 30px;
+  animation: scroll-proof 20s linear infinite;
+  flex-wrap: nowrap;
+}
+
+.proof-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  font-weight: 500;
+  white-space: nowrap;
+  color: rgba(255,255,255,0.9);
+}
+
+.proof-icon {
+  font-size: 20px;
+}
+
+@keyframes scroll-proof {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Booking Timer */
+.booking-timer {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: linear-gradient(135deg, rgba(255,193,7,0.15) 0%, rgba(255,152,0,0.15) 100%);
+  border: 2px solid rgba(255,193,7,0.3);
+  border-radius: 50px;
+  padding: 12px 24px;
+  margin-top: 20px;
+  transition: all 0.3s ease;
+}
+
+.booking-timer.urgent {
+  border-color: rgba(255,51,51,0.5);
+  background: linear-gradient(135deg, rgba(255,51,51,0.2) 0%, rgba(255,0,0,0.2) 100%);
+  animation: urgent-pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes urgent-pulse {
+  0%, 100% { transform: scale(1); box-shadow: 0 0 0 rgba(255,51,51,0.4); }
+  50% { transform: scale(1.02); box-shadow: 0 0 20px rgba(255,51,51,0.6); }
+}
+
+.timer-icon {
+  font-size: 24px;
+}
+
+.timer-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.timer-text strong {
+  font-size: 14px;
+  font-weight: 700;
+  color: #ffc107;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.timer-countdown {
+  font-size: 12px;
+  color: rgba(255,255,255,0.8);
+}
+
+.timer-minutes {
+  font-weight: 700;
+  color: #ffc107;
+}
+
+/* CTA Pulse Animation */
+@keyframes cta-pulse {
+  0% { 
+    box-shadow: 0 12px 30px rgba(0,0,0,0.7); 
+    transform: scale(1);
+  }
+  50% { 
+    box-shadow: 0 12px 40px rgba(255,51,51,0.4), 0 0 30px rgba(255,51,51,0.3); 
+    transform: scale(1.05);
+  }
+  100% { 
+    box-shadow: 0 12px 30px rgba(0,0,0,0.7); 
+    transform: scale(1);
+  }
+}
+
+.btn-primary.pulse-animation {
+  animation: cta-pulse 1s ease-in-out;
+}
+
+/* Advanced Card Hover Effects with Mouse Tracking */
+.service-card,
+.barber-card,
+.testimonial-card {
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.service-card::after,
+.barber-card::after,
+.testimonial-card::after {
+  content: '';
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0,102,255,0.2) 0%, transparent 70%);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  top: var(--mouse-y, 50%);
+  left: var(--mouse-x, 50%);
+  transform: translate(-50%, -50%);
+}
+
+.service-card:hover::after,
+.barber-card:hover::after,
+.testimonial-card:hover::after {
+  opacity: 1;
+}
+
+/* Parallax Backgrounds */
+[data-parallax] {
+  will-change: transform;
+}
+
+/* Enhanced Button Interactions */
+.btn-primary,
+.btn-ghost {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary::before,
+.btn-ghost::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.2);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s ease, height 0.6s ease;
+}
+
+.btn-primary:active::before,
+.btn-ghost:active::before {
+  width: 300px;
+  height: 300px;
+}
+
+/* Gallery Tile Enhanced Hover */
+.gallery-tile {
+  position: relative;
+  overflow: hidden;
+}
+
+.gallery-tile::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(45deg, 
+    rgba(255,51,51,0.3) 0%, 
+    transparent 50%, 
+    rgba(0,102,255,0.3) 100%);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  mix-blend-mode: screen;
+}
+
+.gallery-tile:hover::after {
+  opacity: 1;
+}
+
+/* Smooth Counter Animation */
+[data-count] {
+  font-variant-numeric: tabular-nums;
+  transition: all 0.3s ease;
+}
+
+[data-count].counting {
+  color: var(--accent-gold);
+}
+
+/* Hero Badge Animations */
+.hero-badge {
+  animation: badge-float 3s ease-in-out infinite;
+}
+
+@keyframes badge-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+/* Testimonial Card Special Effects */
+.testimonial-card {
+  background: 
+    radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), 
+      rgba(0,102,255,0.1) 0%, 
+      transparent 50%),
+    radial-gradient(circle at 0 0, rgba(255,255,255,0.08) 0, rgba(255,255,255,0) 55%), 
+    var(--card-bg);
+}
+
+/* Service Card Number Badge */
+.service-card::before {
+  content: attr(data-number);
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ff3333 0%, #0066ff 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 16px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+  opacity: 0;
+  transform: scale(0);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.service-card:hover::before {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Mobile Optimizations */
+@media (max-width: 768px) {
+  .fomo-notification {
+    bottom: 15px;
+    right: 15px;
+    min-width: 240px;
+  }
+  
+  .social-proof-banner {
+    padding: 15px;
+  }
+  
+  .proof-items {
+    gap: 20px;
+  }
+  
+  .booking-timer {
+    padding: 10px 18px;
+  }
+  
+  /* Disable parallax on mobile for performance */
+  [data-parallax] {
+    transform: none !important;
+  }
+}
+
+/* Accessibility: Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  .scroll-progress,
+  .fomo-notification,
+  [data-parallax] {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .scroll-progress,
+  .fomo-notification,
+  .social-proof-banner,
+  .booking-timer {
+    display: none !important;
+  }
+}
