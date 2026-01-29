@@ -3,31 +3,31 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
         xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
   <url>
-    <loc>https://uppercutsbarbershop.com/</loc>
+    <loc>https://uppercutsbarber.shop/</loc>
     <lastmod>2026-01-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://uppercutsbarbershop.com/#services</loc>
+    <loc>https://uppercutsbarber.shop/#services</loc>
     <lastmod>2026-01-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://uppercutsbarbershop.com/#barbers</loc>
+    <loc>https://uppercutsbarber.shop/#barbers</loc>
     <lastmod>2026-01-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://uppercutsbarbershop.com/#gallery</loc>
+    <loc>https://uppercutsbarber.shop/#gallery</loc>
     <lastmod>2026-01-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://uppercutsbarbershop.com/#booking</loc>
+    <loc>https://uppercutsbarber.shop/#booking</loc>
     <lastmod>2026-01-29</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
